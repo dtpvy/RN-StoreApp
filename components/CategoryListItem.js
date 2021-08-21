@@ -3,17 +3,23 @@ import {
   Image,
   Text,
   View,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity,
+  Alert
 } from 'react-native'
 
-import DevicesImg from '../assets/devices.png'
-
 function CategoryListItem(props) {
+  const { category } = props;
   return (
-    <View style={styles.container}>
-      <Text style={styles.categoryTitle}>Devices</Text>
-      <Image style={styles.categoryImg} source={DevicesImg} />
-    </View>
+    <TouchableOpacity
+      activeOpacity={0.5}
+      onPress={() => { Alert.alert(category.name) }}
+    >
+      <View style={styles.container}>
+        <Text style={styles.categoryTitle}>{category.name}</Text>
+        <Image style={styles.categoryImg} source={category.image} />
+      </View>
+    </TouchableOpacity>
   );
 }
 
